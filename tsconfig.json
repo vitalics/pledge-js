@@ -1,0 +1,23 @@
+{
+  "extends": "@tsconfig/node18",
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "lib": [
+      "ES2023"
+    ],
+    "types": [
+      "node",
+      "jest",
+    ],
+    "skipLibCheck": true,
+  },
+  "exclude": [
+    "src/bin.ts",
+    "src/__tests__"
+  ],
+  "include": [
+    "src"
+  ]
+}
