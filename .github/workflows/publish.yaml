@@ -45,7 +45,7 @@ jobs:
           cache: "pnpm"
       - name: Versioning
         run: |
-          pnpm version ${{ github.event.inputs.release_type || 'patch' }}
+          pnpm version ${{ github.event.inputs.release_type || 'patch' }} --git-tag-version=false
           git push origin --follow-tags
       - name: Automated Version ${{ github.event.inputs.release_type || 'patch' }}
         uses: "phips28/gh-action-bump-version@master" # add version
@@ -72,5 +72,5 @@ jobs:
       - uses: JS-DevTools/npm-publish@v2 # publish to npm
         with:
           token: ${{ secrets.NPM_PUBLISH_TOKEN }}
-          ignore-scripts: false
+          ignore-scripts: true
           strategy: upgrade

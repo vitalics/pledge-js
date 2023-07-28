@@ -25,9 +25,6 @@ devDependencies:
   husky:
     specifier: 8.0.3
     version: 8.0.3
-  is-ci:
-    specifier: 3.0.1
-    version: 3.0.1
   jest:
     specifier: 29.6.1
     version: 29.6.1(@types/node@20.4.5)(ts-node@10.9.1)
@@ -2016,13 +2013,6 @@ packages:
 
   /is-arrayish@0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
-    dev: true
-
-  /is-ci@3.0.1:
-    resolution: {integrity: sha512-ZYvCgrefwqoQ6yTyYUbQu64HsITZ3NfKX1lzaEYdkTDcfKzzCI/wthRRYKkdjHKFVgNiXKAKm65Zo1pk2as/QQ==}
-    hasBin: true
-    dependencies:
-      ci-info: 3.8.0
     dev: true
 
   /is-core-module@2.12.1:
