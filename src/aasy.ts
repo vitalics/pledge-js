@@ -14,7 +14,7 @@ type SafeResult<Value, Error = unknown> = ({
   unwrap<E>(error?: E): Value;
 };
 
-export class Guaratee<Value, Error = unknown> extends Promise<Value> {
+export class Async<Value, Error = unknown> extends Promise<Value> {
   constructor(
     executor: Executor<Value, Error>,
   ) {
@@ -59,26 +59,26 @@ export class Guaratee<Value, Error = unknown> extends Promise<Value> {
       }
     } as SafeResult<Value, Error>;
 
-    return Guaratee.resolve<SafeResult<Value, Error>>(resultObject);
+    return Async.resolve<SafeResult<Value, Error>>(resultObject);
   }
 
-  static resolve<Value>(value?: Value): Guaratee<Awaited<Value>, never>;
-  static resolve<Value>(value?: Value | PromiseLike<Value>): Guaratee<Awaited<Value>, never>;
-  static resolve<Value>(value?: Value): Guaratee<Value | undefined, never> {
-    return new Guaratee<Value | undefined, never>((res) => {
+  static resolve<Value>(value?: Value): Async<Awaited<Value>, never>;
+  static resolve<Value>(value?: Value | PromiseLike<Value>): Async<Awaited<Value>, never>;
+  static resolve<Value>(value?: Value): Async<Value | undefined, never> {
+    return new Async<Value | undefined, never>((res) => {
       res(value);
     })
   }
 
-  static reject<Error = unknown>(reason?: Error): Guaratee<never, Error> {
-    return new Guaratee((_, reject) => {
+  static reject<Error = unknown>(reason?: Error): Async<never, Error> {
+    return new Async((_, reject) => {
       reject(reason);
     }
     );
   }
 
   static from<Value, Error = unknown>(promise: PromiseLike<Value>) {
-    return new Guaratee<Value, Error>((res, rej) => {
+    return new Async<Value, Error>((res, rej) => {
       return promise.then(res, rej);
     });
   }

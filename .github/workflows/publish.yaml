@@ -63,12 +63,14 @@ jobs:
             ### Changelog
             {commits}
             Full changelog: {range}
-            finds me on npm: <https://www.npmjs.com/package/guaratee>
+            finds me on npm: <https://www.npmjs.com/package/aasy>
             ### Installation:
-            npm: `npm install guaratee`
-            yarn: `yarn add guaratee`
-            pnpm: `pnpm add guaratee`
+            npm: `npm install aasy`
+            yarn: `yarn add aasy`
+            pnpm: `pnpm add aasy`
             made with ❤ from Vitali Haradkou
-      - uses: JS-DevTools/npm-publish@v1 # publish to npm
+      - uses: JS-DevTools/npm-publish@v2 # publish to npm
         with:
           token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          ignore-scripts: true
+          strategy: upgrade

@@ -1,4 +1,4 @@
-import { Guaratee } from './guaratee';
+import { Async } from './aasy';
 
-export { Guaratee };
-export default Guaratee;
+export { Async as Guaratee };
+export default Async;

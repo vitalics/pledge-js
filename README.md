@@ -1,18 +1,20 @@
-# guaratee
+# aasy
+
+Async - easy.
 
 Zero-library Promise wrapper without pain.
 
 Make Promise without undefined behavior(almost).
 
-## Reason to use guaratee
+## Reason to use aasy
 
-1. Typescript types. [Promise][1] stantard generic is not accepts Reject generic. Guaratee does.
+1. Typescript types. [Promise][1] stantard generic is not accepts Reject generic. aasy does.
 2. Less undefined behavior, when using [safe](#safe) function.
 3. Inherited from built-in [Promise][1] object
 4. [ESM](https://nodejs.org/api/esm.html) and [CJS](https://nodejs.org/api/modules.html) support.
 
 ```typescript
-type Guaratee<Value, Error = unknown> = intrinsic // from native Promise + API
+type Async<Value, Error = unknown> = intrinsic // from native Promise + API
 ```
 
 ## Wanna be contributor?
@@ -39,8 +41,8 @@ Call promise and do not throw an error even if get rejected status.
 #### Example safe
 
 ```typescript
-import Guaratee from 'guaratee';
-const promiseThatFails = await Guaratee.safe(Guaratee.reject(123));
+import Async from 'aasy';
+const promiseThatFails = await Async.safe(Async.reject(123));
 
 promiseThatFails.success // false
 promiseThatFails.value // undefined
@@ -48,7 +50,7 @@ promiseThatFails.error // 123
 promiseThatFails.unwrap() // throws "123"
 promiseThatFails.unwrap("Undefined Behavior") // throws "Undefined Behavior"
 
-const promiseSuccess = await Guaratee.safe("Hello!");
+const promiseSuccess = await Async.safe("Hello!");
 
 promiseSuccess.success // true
 promiseSuccess.error // undefined
@@ -60,32 +62,32 @@ console.log(value) // "Hello!"
 
 ### from
 
-Transforms `Promise | PromiseLike` value into guaratee instance.
+Transforms `Promise | PromiseLike` value into async instance.
 
 #### Example from
 
 ```typescript
-import Guaratee from 'guaratee';
+import Async from 'aasy';
 
 const promiseFromSomewhere = fetch(...);
-const promise = Guaratee.from(promiseFromSomewhere);
+const promise = Async.from(promiseFromSomewhere);
 // or you can use await to get result from promise
-const awaitdResult = await Guaratee.from(promiseFromSomewhere);
+const awaitdResult = await Async.from(promiseFromSomewhere);
 ```
 
-### Guaratee.resolve
+### Async.resolve
 
 Inherited from [Promise][1]
 
-### Guaratee.reject
+### Async.reject
 
 Inherited from [Promise][1]
 
-### Guaratee.all
+### Async.all
 
 Inherited from [Promise][1]
 
-### Guaratee.any
+### Async.any
 
 Inherited from [Promise][1]
 

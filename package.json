@@ -1,6 +1,6 @@
 {
-  "name": "guaratee",
-  "version": "1.0.2",
+  "name": "aasy",
+  "version": "1.0.0",
   "description": "Make Promise without undefined behavior",
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
@@ -44,7 +44,7 @@
     "asyncrhonous",
     "async",
     "await",
-    "guaratee"
+    "aasy"
   ],
   "author": "Vitali Haradkou <vitalicset@yandex.ru>",
   "license": "MIT"

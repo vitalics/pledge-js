@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Guaratee } from '../guaratee'
+import { Async } from '../aasy'
 
 test('constructor should returns Promise', async () => {
   const fn = jest.fn;
-  const promise = new Guaratee(fn);
+  const promise = new Async(fn);
   // @ts-expect-error
   expect(promise.__proto__.__proto__).toBe(Promise.prototype);
 });
 
 test('instance should contains .then .catch .finally functions', async () => {
   const fn = jest.fn;
-  const promise = new Guaratee(fn);
+  const promise = new Async(fn);
 
   expect(promise).toHaveProperty('then');
   expect(promise).toHaveProperty('catch');
@@ -18,7 +18,7 @@ test('instance should contains .then .catch .finally functions', async () => {
 })
 
 test('safe should return safe success result', async () => {
-  const safeResult = await Guaratee.safe(123);
+  const safeResult = await Async.safe(123);
   expect(safeResult.success).toBeTruthy();
   expect(safeResult.value).toBeDefined();
   expect(safeResult.error).toBeUndefined();
@@ -26,7 +26,7 @@ test('safe should return safe success result', async () => {
 });
 
 test('safe should return safe result and unwrap throw an error', async () => {
-  const safeResult = await Guaratee.safe(Guaratee.reject(123));
+  const safeResult = await Async.safe(Async.reject(123));
   expect(safeResult.success).toBeFalsy();
   expect(safeResult.value).toBeUndefined();
   expect(safeResult.error).toBeDefined();
@@ -36,7 +36,7 @@ test('safe should return safe result and unwrap throw an error', async () => {
 
 test('then should be chainable', async () => {
   expect.assertions(1);
-  new Guaratee<number>((resolve) => {
+  new Async<number>((resolve) => {
     resolve(1);
   }).then(value => {
     return value + 1;
