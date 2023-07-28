@@ -72,5 +72,5 @@ jobs:
       - uses: JS-DevTools/npm-publish@v2 # publish to npm
         with:
           token: ${{ secrets.NPM_PUBLISH_TOKEN }}
-          ignore-scripts: true
+          ignore-scripts: false
           strategy: upgrade
