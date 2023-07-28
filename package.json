@@ -1,5 +1,5 @@
 {
-  "name": "pledge",
+  "name": "guaratee",
   "version": "1.0.0",
   "description": "Make Promise without undefined behavior",
   "main": "dist/index.cjs",
@@ -43,7 +43,7 @@
     "asyncrhonous",
     "async",
     "await",
-    "pledge"
+    "guaratee"
   ],
   "author": "Vitali Haradkou <vitalicset@yandex.ru>",
   "license": "MIT"

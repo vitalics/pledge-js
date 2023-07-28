@@ -63,11 +63,11 @@ jobs:
             ### Changelog
             {commits}
             Full changelog: {range}
-            finds me on npm: <https://www.npmjs.com/package/pledge>
+            finds me on npm: <https://www.npmjs.com/package/guaratee>
             ### Installation:
-            npm: `npm install pledge`
-            yarn: `yarn add pledge`
-            pnpm: `pnpm add pledge`
+            npm: `npm install guaratee`
+            yarn: `yarn add guaratee`
+            pnpm: `pnpm add guaratee`
             made with ❤ from Vitali Haradkou
       - uses: JS-DevTools/npm-publish@v1 # publish to npm
         with:

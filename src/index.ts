@@ -1,4 +1,4 @@
-import { Pledge } from './pledge';
+import { Guaratee } from './guaratee';
 
-export { Pledge };
-export default Pledge;
+export { Guaratee };
+export default Guaratee;

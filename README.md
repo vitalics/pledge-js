@@ -1,24 +1,18 @@
-# pledge-js
-
-``` text
-Pledge(lat.) - a solemn promise or undertaking.
-
-Sinonimous - Promise
-```
+# guaratee
 
 Zero-library Promise wrapper without pain.
 
 Make Promise without undefined behavior(almost).
 
-## Reason to use pledge-js
+## Reason to use guaratee
 
-1. Typescript types. [Promise][1] stantard generic is not accepts Reject generic. Pledge does.
+1. Typescript types. [Promise][1] stantard generic is not accepts Reject generic. Guaratee does.
 2. Less undefined behavior, when using [safe](#safe) function.
 3. Inherited from built-in [Promise][1] object
 4. [ESM](https://nodejs.org/api/esm.html) and [CJS](https://nodejs.org/api/modules.html) support.
 
 ```typescript
-type Pledge<Value, Error = unknown> = intrinsic // from native Promise + API
+type Guaratee<Value, Error = unknown> = intrinsic // from native Promise + API
 ```
 
 ## Wanna be contributor?
@@ -45,8 +39,8 @@ Call promise and do not throw an error even if get rejected status.
 #### Example safe
 
 ```typescript
-import Pledge from 'pledge';
-const promiseThatFails = await Pledge.safe(Pledge.reject(123));
+import Guaratee from 'guaratee';
+const promiseThatFails = await Guaratee.safe(Guaratee.reject(123));
 
 promiseThatFails.success // false
 promiseThatFails.value // undefined
@@ -54,7 +48,7 @@ promiseThatFails.error // 123
 promiseThatFails.unwrap() // throws "123"
 promiseThatFails.unwrap("Undefined Behavior") // throws "Undefined Behavior"
 
-const promiseSuccess = await Pledge.safe("Hello!");
+const promiseSuccess = await Guaratee.safe("Hello!");
 
 promiseSuccess.success // true
 promiseSuccess.error // undefined
@@ -66,32 +60,32 @@ console.log(value) // "Hello!"
 
 ### from
 
-Transforms `Promise | PromiseLike` value into pledge instance.
+Transforms `Promise | PromiseLike` value into guaratee instance.
 
 #### Example from
 
 ```typescript
-import Pledge from 'pledge';
+import Guaratee from 'guaratee';
 
 const promiseFromSomewhere = fetch(...);
-const pledgePromise = Pledge.from(promiseFromSomewhere);
+const promise = Guaratee.from(promiseFromSomewhere);
 // or you can use await to get result from promise
-const awaitdResult = await Pledge.from(promiseFromSomewhere);
+const awaitdResult = await Guaratee.from(promiseFromSomewhere);
 ```
 
-### Pledge.resolve
+### Guaratee.resolve
 
 Inherited from [Promise][1]
 
-### Pledge.reject
+### Guaratee.reject
 
 Inherited from [Promise][1]
 
-### Pledge.all
+### Guaratee.all
 
 Inherited from [Promise][1]
 
-### Pledge.any
+### Guaratee.any
 
 Inherited from [Promise][1]
 
