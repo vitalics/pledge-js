@@ -12,11 +12,6 @@ on:
         description: "version type, can be 'patch', 'minor', 'major'"
         required: true
         default: patch
-  push:
-    branches:
-      - main
-    tags:
-      - "*"
 
 jobs:
   npm_release:
@@ -37,6 +32,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}-
             ${{ runner.os }}-
+      - name: Setup Git User
+        uses: fregante/setup-git-user@v2
       - name: use pnpm with node
         uses: pnpm/action-setup@v2
         with:
@@ -49,6 +46,7 @@ jobs:
       - name: Versioning
         run: |
           pnpm version ${{ github.event.inputs.release_type || 'patch' }}
+          git push origin --follow-tags
       - name: Automated Version ${{ github.event.inputs.release_type || 'patch' }}
         uses: "phips28/gh-action-bump-version@master" # add version
         env:
